@@ -498,7 +498,7 @@ char *yytext;
 #line 2 "scanner.l"
 #include <stdio.h>
 #include <stdlib.h>
-#include "y.tab.h"   
+#include "parser.tab.h"   
 #line 502 "lex.yy.c"
 #line 503 "lex.yy.c"
 
