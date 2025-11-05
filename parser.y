@@ -1,8 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "y.tab.h"  // Cabeçalho gerado pelo Bison que contém os tokens
+#include "y.tab.h"  // Arquivo de cabeçalho gerado pelo Bison que contém os tokens
 %}
 
 // Declaração dos tokens que o Flex irá gerar
@@ -75,27 +74,9 @@ ACTION:
     | "desligar"   { printf("Ação: Desligar\n"); }
     ;
 
-ATTRIB:
-    "def" ID_OBS "=" VAL ";"   { printf("Atribuição de valor a %s: %s\n", $2, $4); }
-    ;
-
 OBS:
     ID_OBS OPLOGIC VAL AND OBS   { printf("Operação lógica: %s %s %s\n", $1, $2, $4); }
     | ID_OBS OPLOGIC VAL     { printf("Operação lógica: %s %s %s\n", $1, $2, $3); }
-    ;
-
-VAL:
-    NUM    { printf("Valor numérico: %d\n", $1); }
-    | BOOL   { printf("Valor booleano: %s\n", $1); }
-    ;
-
-OPLOGIC:
-    ">"    { printf("Operador lógico: >\n"); }
-    | "<"    { printf("Operador lógico: <\n"); }
-    | ">="   { printf("Operador lógico: >=\n"); }
-    | "<="   { printf("Operador lógico: <=\n"); }
-    | "=="   { printf("Operador lógico: ==\n"); }
-    | "!="   { printf("Operador lógico: !=\n"); }
     ;
 
 %%
